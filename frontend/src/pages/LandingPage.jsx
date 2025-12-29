@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import html2canvas from 'html2canvas';
 import api from '../api';
 import mockEvents from '../mockEvents.json';
+import Marquee from '../components/Marquee';
 
 const LandingPage = () => {
     const [events, setEvents] = useState([]);
@@ -134,7 +135,7 @@ const LandingPage = () => {
             {/* HERO SECTION */}
             <section className="relative h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden">
                 <div className="absolute inset-0 z-0">
-                    <img src="/bg.svg" alt="Background" className="w-full h-full object-cover opacity-50" />
+                    <img src="https://drive.google.com/thumbnail?id=1Jq9vCrnxiS6GSYVTEjATIxuAZjn7iINL&sz=w1920" alt="Background" className="w-full h-full object-cover opacity-50" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-black/80"></div>
                 </div>
 
@@ -162,14 +163,25 @@ const LandingPage = () => {
                         </div>
                     )}
                 </div>
+                {/* MARQUEE BAND */}
+                <Marquee />
             </section>
 
             {/* UPCOMING EVENTS */}
-            <section id="events" className="py-24 px-6 relative z-10 reveal">
-                <div className="max-w-7xl mx-auto">
+            {/* UPCOMING EVENTS */}
+            <section id="events" className="py-24 px-6 relative z-10 reveal overflow-hidden">
+                <div className="absolute inset-0 z-0 pointer-events-none">
+                    <img
+                        src="https://drive.google.com/thumbnail?id=1-4-Fkkj9L8H0bFRIaydWt5dLAPHLWHuB&sz=w1920"
+                        alt="Events Background"
+                        className="w-full h-full object-cover opacity-60"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-tb from-[#050505] via-transparent to-[#050505] opacity-90"></div>
+                </div>
+                <div className="max-w-7xl mx-auto relative z-10">
                     <div className="flex justify-between items-end mb-16 border-b border-gray-800 pb-4">
                         <h2 className="text-4xl md:text-6xl font-black text-white">
-                            RITUALES <span className="text-neonPurple">PRÓXIMOS</span>
+                            RITUALES <span className="text-transparent bg-clip-text bg-gradient-to-r from-neonPurple to-neonPink">PRÓXIMOS</span>
                         </h2>
                         <span className="hidden md:block text-gray-500 tracking-widest">ELIGE TU NOCHE</span>
                     </div>
@@ -303,7 +315,7 @@ const LandingPage = () => {
             {menuUrl && (
                 <section id="menu" className="py-24 px-6 relative bg-[#0a0a0a] border-t border-gray-900 reveal">
                     <div className="max-w-5xl mx-auto text-center">
-                        <h2 className="text-3xl md:text-5xl font-black text-white mb-2 uppercase">NUESTRA <span className="text-neonPurple">CARTA</span></h2>
+                        <h2 className="text-3xl md:text-5xl font-black text-white mb-2 uppercase">NUESTRA <span className="text-transparent bg-clip-text bg-gradient-to-r from-neonPurple to-neonPink">CARTA</span></h2>
                         <p className="text-gray-400 mb-10 tracking-widest text-sm">EXPLORA NUESTROS TRAGOS DE AUTOR</p>
 
                         <div className="w-full h-[60vh] md:h-[80vh] bg-black/50 border border-gray-800 rounded-2xl overflow-hidden mb-8 shadow-2xl relative">
@@ -329,18 +341,34 @@ const LandingPage = () => {
             {/* ABOUT / BANNER */}
             <section id="about" className="py-24 bg-white/5 relative overflow-hidden reveal">
                 <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-neonPurple to-transparent opacity-50"></div>
-                <div className="max-w-4xl mx-auto text-center px-6">
-                    <h2 className="text-3xl md:text-5xl font-bold mb-8">Redefiniendo la Noche</h2>
-                    <p className="text-gray-400 text-lg leading-relaxed mb-12">
-                        SÀBBATH no es solo un club, es una experiencia. Audiovisuales inmersivos,
-                        mixología de clase mundial y una atmósfera que pulsa con el ritmo de la ciudad.
-                        Únete a la élite.
-                    </p>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                        <div><div className="text-3xl font-bold text-neonPink mb-2">50+</div><div className="text-xs tracking-widest text-gray-500">ARTISTAS</div></div>
-                        <div><div className="text-3xl font-bold text-neonPink mb-2">2000+</div><div className="text-xs tracking-widest text-gray-500">AFORO</div></div>
-                        <div><div className="text-3xl font-bold text-neonPink mb-2">3</div><div className="text-xs tracking-widest text-gray-500">ESCENARIOS</div></div>
-                        <div><div className="text-3xl font-bold text-neonPink mb-2">∞</div><div className="text-xs tracking-widest text-gray-500">VIBRAS</div></div>
+                <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    {/* Left Column: Text */}
+                    <div className="text-left">
+                        <h2 className="text-3xl md:text-5xl font-bold mb-8 text-white">Redefiniendo <span className="text-transparent bg-clip-text bg-gradient-to-r from-neonPurple to-neonPink">la Noche</span></h2>
+                        <p className="text-gray-400 text-lg leading-relaxed mb-12">
+                            SÀBBATH no es solo un club, es una experiencia. Audiovisuales inmersivos,
+                            mixología de clase mundial y una atmósfera que pulsa con el ritmo de la ciudad.
+                            Únete a la élite.
+                        </p>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left">
+                            <div><div className="text-3xl font-bold text-neonPink mb-2">50+</div><div className="text-xs tracking-widest text-gray-500">ARTISTAS</div></div>
+                            <div><div className="text-3xl font-bold text-neonPink mb-2">2000+</div><div className="text-xs tracking-widest text-gray-500">AFORO</div></div>
+                            <div><div className="text-3xl font-bold text-neonPink mb-2">3</div><div className="text-xs tracking-widest text-gray-500">ESCENARIOS</div></div>
+                            <div><div className="text-3xl font-bold text-neonPink mb-2">∞</div><div className="text-xs tracking-widest text-gray-500">VIBRAS</div></div>
+                        </div>
+                    </div>
+
+                    {/* Right Column: Video */}
+                    <div className="relative rounded-2xl overflow-hidden border border-neonPurple/20 shadow-[0_0_50px_rgba(180,109,248,0.1)] group">
+                        <div className="absolute inset-0 bg-neonPurple/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10"></div>
+                        <video
+                            src="/assets/sabbath_intro.mp4"
+                            className="w-full h-full object-cover aspect-video"
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                        />
                     </div>
                 </div>
             </section>

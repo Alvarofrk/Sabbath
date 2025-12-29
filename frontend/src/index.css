@@ -76,6 +76,35 @@ body {
   transform: translateY(0);
 }
 
+/* MARQUEE ANIMATION */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+  display: flex;
+  /* Ensure flex for side-by-side spans */
+}
+
+/* Pause on hover */
+.hover\:pause:hover {
+  animation-play-state: paused;
+}
+
+/* Outline Text Effect */
+.stroke-text {
+  -webkit-text-stroke: 1px #B46DF8;
+  /* neonPurple value */
+  color: transparent;
+}
+
 /* REACT DATEPICKER DARK NEON THEME */
 .react-datepicker {
   font-family: 'Inter', sans-serif !important;
