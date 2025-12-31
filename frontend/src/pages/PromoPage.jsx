@@ -82,11 +82,11 @@ const PromoPage = () => {
     if (error) return <div className="min-h-screen bg-black flex items-center justify-center text-red-500 font-bold">{error}</div>;
 
     return (
-        <div className="min-h-dvh bg-[#050505] text-white flex flex-col items-center justify-start pt-32 p-4 md:p-6 relative overflow-y-auto">
+        <div className="min-h-dvh bg-[#050505] text-white flex flex-col items-center justify-start pt-24 md:pt-32 p-4 md:p-6 relative overflow-y-auto">
             {/* Background FX */}
             <div className="absolute top-0 left-0 w-full h-full bg-[url('/bg.svg')] bg-cover opacity-20 z-0"></div>
 
-            <div className="relative z-10 max-w-md w-full">
+            <div className="relative z-10 max-w-md w-full mt-4 md:mt-4">
                 {!ticket ? (
                     <div className="glass p-8 rounded-2xl border border-neonPurple/30 shadow-[0_0_50px_rgba(168,85,247,0.2)] text-center animate-fade-in">
                         <div className="mb-6">

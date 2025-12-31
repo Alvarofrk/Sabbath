@@ -1,0 +1,75 @@
+# ==============================================================================
+# SABBATH PROJECT - .GITIGNORE MASTER
+# ==============================================================================
+# Exclusions for Monorepo (Backend Django + Frontend Vite/React)
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# SYSTEM & IDE
+# ------------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ------------------------------------------------------------------------------
+# SECRET & CONFIGURATION
+# ------------------------------------------------------------------------------
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# ------------------------------------------------------------------------------
+# PYTHON & DJANGO (BACKEND)
+# ------------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Django Defaults
+*.sqlite3
+db.sqlite3
+db.sqlite3-journal
+
+# Static & Media
+/backend/media/
+/backend/staticfiles/
+
+# ------------------------------------------------------------------------------
+# NODE.JS & FRONTEND (REACT/VITE)
+# ------------------------------------------------------------------------------
+node_modules/
+/frontend/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Builds
+/frontend/dist/
+/frontend/build/
+/frontend/coverage/
+
+# Testing
+/frontend/cypress/videos/
+/frontend/cypress/screenshots/
+
+# ------------------------------------------------------------------------------
+# LOGS
+# ------------------------------------------------------------------------------
+*.log
+celerybeat-schedule
+celerybeat.pid

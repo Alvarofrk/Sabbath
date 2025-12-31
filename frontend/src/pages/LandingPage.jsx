@@ -20,6 +20,19 @@ const LandingPage = () => {
     const [menuUrl, setMenuUrl] = useState(null);
     const [promos, setPromos] = useState([]);
 
+    // Media Rotation Logic: 0 = Video, 1 = Image 1, 2 = Image 2
+    const [mediaIndex, setMediaIndex] = useState(0);
+
+    useEffect(() => {
+        let timer;
+        if (mediaIndex === 1) {
+            timer = setTimeout(() => setMediaIndex(2), 3000); // Image 1 for 3s -> Image 2
+        } else if (mediaIndex === 2) {
+            timer = setTimeout(() => setMediaIndex(0), 3000); // Image 2 for 3s -> Video
+        }
+        return () => clearTimeout(timer);
+    }, [mediaIndex]);
+
     useEffect(() => {
         // Fetch Menu
         api.get('menus/').then(res => {
@@ -135,12 +148,12 @@ const LandingPage = () => {
             {/* HERO SECTION */}
             <section className="relative h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden">
                 <div className="absolute inset-0 z-0">
-                    <img src="https://drive.google.com/thumbnail?id=1Jq9vCrnxiS6GSYVTEjATIxuAZjn7iINL&sz=w1920" alt="Background" className="w-full h-full object-cover opacity-50" />
+                    <img src="https://lh3.googleusercontent.com/d/1Jq9vCrnxiS6GSYVTEjATIxuAZjn7iINL" alt="Background" className="w-full h-full object-cover opacity-50" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-black/80"></div>
                 </div>
 
                 <div className="relative z-10 max-w-4xl mx-auto animate-fade-in">
-                    <h2 className="text-neonPurple tracking-[1em] text-sm md:text-xl mb-4 uppercase">Bienvenidos al vacío</h2>
+                    <h2 className="text-neonPurple tracking-[1em] text-sm md:text-xl mb-4 uppercase">Bienvenidos al vórtice</h2>
                     <h1 className="text-7xl md:text-9xl font-black mb-6 text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500 neon-text">
                         SÀBBATH
                     </h1>
@@ -172,7 +185,7 @@ const LandingPage = () => {
             <section id="events" className="py-24 px-6 relative z-10 reveal overflow-hidden">
                 <div className="absolute inset-0 z-0 pointer-events-none">
                     <img
-                        src="https://drive.google.com/thumbnail?id=1-4-Fkkj9L8H0bFRIaydWt5dLAPHLWHuB&sz=w1920"
+                        src="https://lh3.googleusercontent.com/d/1-4-Fkkj9L8H0bFRIaydWt5dLAPHLWHuB"
                         alt="Events Background"
                         className="w-full h-full object-cover opacity-60"
                     />
@@ -344,31 +357,47 @@ const LandingPage = () => {
                 <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     {/* Left Column: Text */}
                     <div className="text-left">
-                        <h2 className="text-3xl md:text-5xl font-bold mb-8 text-white">Redefiniendo <span className="text-transparent bg-clip-text bg-gradient-to-r from-neonPurple to-neonPink">la Noche</span></h2>
+                        <h2 className="text-3xl md:text-5xl font-bold mb-8 text-white"><span className="text-transparent bg-clip-text bg-gradient-to-r from-neonPurple to-neonPink">#SÀBBATHNIGHT</span></h2>
                         <p className="text-gray-400 text-lg leading-relaxed mb-12">
-                            SÀBBATH no es solo un club, es una experiencia. Audiovisuales inmersivos,
+                            SÀBBATH no es solo un club, es la brecha entre este mundo y el otro. Audiovisuales inmersivos,
                             mixología de clase mundial y una atmósfera que pulsa con el ritmo de la ciudad.
-                            Únete a la élite.
+                            Únete al culto.
                         </p>
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left">
-                            <div><div className="text-3xl font-bold text-neonPink mb-2">50+</div><div className="text-xs tracking-widest text-gray-500">ARTISTAS</div></div>
-                            <div><div className="text-3xl font-bold text-neonPink mb-2">2000+</div><div className="text-xs tracking-widest text-gray-500">AFORO</div></div>
-                            <div><div className="text-3xl font-bold text-neonPink mb-2">3</div><div className="text-xs tracking-widest text-gray-500">ESCENARIOS</div></div>
+                        <div className="flex justify-center md:justify-start">
                             <div><div className="text-3xl font-bold text-neonPink mb-2">∞</div><div className="text-xs tracking-widest text-gray-500">VIBRAS</div></div>
                         </div>
                     </div>
 
                     {/* Right Column: Video */}
-                    <div className="relative rounded-2xl overflow-hidden border border-neonPurple/20 shadow-[0_0_50px_rgba(180,109,248,0.1)] group">
+                    <div className="relative rounded-2xl overflow-hidden border border-neonPurple/20 shadow-[0_0_50px_rgba(180,109,248,0.1)] group aspect-video bg-black">
                         <div className="absolute inset-0 bg-neonPurple/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10"></div>
-                        <video
-                            src="/assets/sabbath_intro.mp4"
-                            className="w-full h-full object-cover aspect-video"
-                            autoPlay
-                            muted
-                            loop
-                            playsInline
-                        />
+
+                        {mediaIndex === 0 && (
+                            <video
+                                src="/assets/sabbath_intro.mp4"
+                                className="w-full h-full object-cover animate-fade-in"
+                                autoPlay
+                                muted
+                                playsInline
+                                onEnded={() => setMediaIndex(1)}
+                            />
+                        )}
+
+                        {mediaIndex === 1 && (
+                            <img
+                                src="https://drive.google.com/thumbnail?id=1OJgIgB6aImjd0_XYlJbfvCoyn63DVcsM&sz=w1000"
+                                alt="Sabbath Vibes 1"
+                                className="w-full h-full object-cover animate-fade-in"
+                            />
+                        )}
+
+                        {mediaIndex === 2 && (
+                            <img
+                                src="https://drive.google.com/thumbnail?id=1vAn1TTz61PPU8qkGnwzhp8Zj7ptAIsPc&sz=w1000"
+                                alt="Sabbath Vibes 2"
+                                className="w-full h-full object-cover animate-fade-in"
+                            />
+                        )}
                     </div>
                 </div>
             </section>
@@ -526,7 +555,15 @@ const LandingPage = () => {
 
 
             {/* FOOTER */}
+            {/* FOOTER */}
             <footer className="py-12 bg-black text-center border-t border-gray-900 text-gray-600 text-sm">
+                <div className="flex justify-center items-center gap-8 mb-8 flex-wrap px-4">
+                    <img src="https://drive.google.com/thumbnail?id=138hCac1wb7I3Neu9rmrgnSnxozzsDG3P&sz=w400" alt="Sponsor 1" className="h-10 md:h-14 object-contain opacity-50 hover:opacity-100 transition-all duration-300 grayscale hover:grayscale-0" />
+                    <img src="https://drive.google.com/thumbnail?id=1_i3IroE_sxsnKrU7psOPjkZKYr_5liin&sz=w400" alt="Sponsor 2" className="h-10 md:h-14 object-contain opacity-50 hover:opacity-100 transition-all duration-300 grayscale hover:grayscale-0" />
+                    <img src="https://drive.google.com/thumbnail?id=1b1lpuRAQV7z7PAX6rkjQmyLEEXX4rWqd&sz=w400" alt="Sponsor 4" className="h-20 md:h-28 object-contain opacity-50 hover:opacity-100 transition-all duration-300 grayscale hover:grayscale-0" />
+                    <img src="https://drive.google.com/thumbnail?id=1nXKFP3bDPdJlWRhtkWApG0SaAyUm8iBF&sz=w400" alt="Sponsor 3" className="h-10 md:h-14 object-contain opacity-50 hover:opacity-100 transition-all duration-300 grayscale hover:grayscale-0" />
+                    <img src="/assets/trago5.png" alt="Sponsor 5" className="h-10 md:h-14 object-contain opacity-50 hover:opacity-100 transition-all duration-300 grayscale hover:grayscale-0" />
+                </div>
                 <p>&copy; 2025 SÀBBATH BAR CLUB. TODOS LOS DERECHOS RESERVADOS.</p>
             </footer>
         </div >

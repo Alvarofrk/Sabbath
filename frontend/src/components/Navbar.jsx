@@ -17,12 +17,10 @@ const Navbar = () => {
     return (
         <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled || isOpen ? 'bg-black/90 py-3 border-b border-neonPurple/30' : 'bg-transparent py-6'}`}>
             <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-                <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="z-50 relative">
-                    <img
-                        src="https://drive.google.com/thumbnail?id=1tVlRwyWZ-5nCJ7cRrYX80akhT5pk1EuI&sz=w500"
-                        alt="SABBATH Logo"
-                        className="h-12 md:h-16 object-contain"
-                    />
+                <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="z-50 relative group">
+                    <span className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500 neon-text tracking-widest group-hover:text-white transition-all duration-300">
+                        SÀBBATH
+                    </span>
                 </Link>
 
                 {/* Mobile Menu Button */}
