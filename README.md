@@ -1,17 +1,21 @@
 # SABBATH
-### *Redefiniendo el Paisaje Digital*
+### *Sistema de Gestión Integral para Nightclubs & Entretenimiento*
 
 ---
 
 ## 1. Visión Ejecutiva
 
-Bienvenido al repositorio central de **Sabbath**. Este monorepo alberga la arquitectura integral de nuestra plataforma digital de vanguardia, diseñada para ofrecer experiencias de usuario inmersivas y un rendimiento de backend robusto y escalar.
+Bienvenido al repositorio central de **Sabbath**. Este monorepo alberga la arquitectura integral de nuestra plataforma digital de vanguardia, diseñada específicamente para la **gestión 360° de bares y clubes nocturnos**.
 
-El proyecto está estructurado estratégicamente en dos componentes principales:
-*   **Backend Core**: API RESTful de alto rendimiento basada en Django.
-*   **Frontend Client**: Interfaz de usuario reactiva y moderna construida con Vite y React.
+El sistema digitaliza la experiencia del cliente y la operación del local, ofreciendo una solución robusta para el control de acceso, marketing y gestión de aforo en tiempo real.
 
-Esta documentación sirve como punto de entrada autoritativo para desarrolladores, arquitectos y stakeholders técnicos.
+### Capacidades del Negocio
+El proyecto no es solo un sitio web, sino un **Enterprise Resource Planning (ERP)** ligero enfocado en la vida nocturna que incluye:
+
+*   **Gestión de Eventos y Aforo**: Administración centralizada de carteleras, fechas y control de capacidad máxima.
+*   **Sistema de Reservas Inteligente**: Generación automática de **Códigos QR** únicos por reserva, validados en puerta para un acceso fluido y seguro.
+*   **Experiencia Digital (Menu & Promos)**: Despliegue de menús digitales y campañas de marketing ("Promos") con tickets QR canjeables (ej. cortesías, descuentos).
+*   **Control de Acceso e Identidad**: Registro de asistentes con validación de DNI para seguridad y analítica de clientes.
 
 ---
 
@@ -21,16 +25,17 @@ La solución tecnológica se ha diseñado siguiendo patrones de arquitectura lim
 
 ```mermaid
 graph TD
-    A[Cliente Web / App] -->|HTTPS / JSON| B(Frontend - Vite/React)
-    B -->|API REST| C(Backend - Django REST Framework)
-    C -->|ORM| D[(Base de Datos - SQLite/PostgreSQL)]
-    C -->|Gestión de Archivos| E[Sistema de Archivos / Media]
+    A[Cliente: Web / Móvil] -->|Reservas & Promos| B(Frontend - Vite/React)
+    B -->|API Requests| C(Backend - Django REST Framework)
+    C -->|Persistencia| D[(Base de Datos - Eventos, Reservas, QR)]
+    C -->|Generación Assets| E[Motor QR & Procesamiento de Imagenes]
+    F[Staff: Validadores] -->|Escaneo QR| B
 ```
 
 ### Estructura de Directorios
 
-*   `/backend` - Lógica de negocio, gestión de datos y APIs.
-*   `/frontend` - Capa de presentación, componentes UI y lógica de cliente.
+*   `/backend` - **Core Logic**: Modelos de datos (Eventos, Tickets, Menús), generación de códigos QR (Python/Pillow), y API REST segura.
+*   `/frontend` - **User Experience**: Interfaz reactiva para clientes (Landing, Reservas) y staff (Validadores de QR).
 
 ---
 
@@ -65,5 +70,5 @@ El desarrollo dentro de este proyecto se adhiere estrictamente a estándares de 
 
 ---
 
-**© 2025 Sabbath Project. Todos los derechos reservados.**
-*Documentación confidencial y propietaria.*
+**© 2025 Sabbath Project.**
+*Transformando la Experiencia Nocturna.*
