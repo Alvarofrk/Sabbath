@@ -4,3 +4,6 @@ django-cors-headers
 qrcode
 pillow
 python-dotenv
+psycopg2-binary
+gunicorn
+whitenoise

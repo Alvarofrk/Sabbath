@@ -50,6 +50,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -92,7 +93,11 @@ WSGI_APPLICATION = "sabbath_backend.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": os.getenv('DB_ENGINE', 'django.db.backends.sqlite3'),
-        "NAME": BASE_DIR / os.getenv('DB_NAME', 'db.sqlite3'),
+        "NAME": os.getenv('DB_NAME', BASE_DIR / 'db.sqlite3'),
+        "USER": os.getenv('DB_USER', ''),
+        "PASSWORD": os.getenv('DB_PASSWORD', ''),
+        "HOST": os.getenv('DB_HOST', ''),
+        "PORT": os.getenv('DB_PORT', ''),
     }
 }
 
@@ -131,7 +136,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = "static/"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

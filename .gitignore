@@ -47,7 +47,7 @@ db.sqlite3-journal
 # Static & Media
 /backend/media/
 /backend/staticfiles/
-
+/backend/.env/
 # ------------------------------------------------------------------------------
 # NODE.JS & FRONTEND (REACT/VITE)
 # ------------------------------------------------------------------------------

@@ -147,16 +147,17 @@ const LandingPage = () => {
         <div className="bg-[#050505] min-h-screen text-white overflow-hidden">
             {/* HERO SECTION */}
             <section className="relative h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden">
-                <div className="absolute inset-0 z-0">
-                    <img src="https://lh3.googleusercontent.com/d/1Jq9vCrnxiS6GSYVTEjATIxuAZjn7iINL" alt="Background" className="w-full h-full object-cover opacity-50" />
+                <div className="absolute inset-0 z-0 bg-black overflow-hidden">
+                    {/* Dynamic CSS Background */}
+                    <div className="absolute top-[-20%] left-[-20%] w-[150vw] h-[150vw] md:w-[60vw] md:h-[60vw] bg-neonPurple/40 rounded-full blur-[80px] md:blur-[120px] animate-pulse"></div>
+                    <div className="absolute bottom-[-20%] right-[-20%] w-[150vw] h-[150vw] md:w-[60vw] md:h-[60vw] bg-purple-900/50 rounded-full blur-[100px] md:blur-[150px] animate-pulse"></div>
+                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-radial from-neonPurple/20 to-transparent blur-2xl md:blur-3xl"></div>
                     <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-black/80"></div>
                 </div>
 
                 <div className="relative z-10 max-w-4xl mx-auto animate-fade-in">
                     <h2 className="text-neonPurple tracking-[1em] text-sm md:text-xl mb-4 uppercase">Bienvenidos al vórtice</h2>
-                    <h1 className="text-7xl md:text-9xl font-black mb-6 text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500 neon-text">
-                        SÀBBATH
-                    </h1>
+                    <img src="https://lh3.googleusercontent.com/d/1JUsJhmRSdgFgPGcb5jJyAXCkXlYLi8Ag" alt="SÀBBATH" className="h-24 md:h-48 object-contain mx-auto mb-6 filter brightness-125 drop-shadow-[0_0_15px_rgba(255,255,255,0.5)] animate-pulse-slow" />
                     <p className="text-xl md:text-2xl text-gray-300 mb-10 font-light tracking-wide max-w-2xl mx-auto">
                         Santuario del Sonido. <br /> Donde la noche cobra vida.
                     </p>
