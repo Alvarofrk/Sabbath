@@ -128,14 +128,22 @@ def validate_qr(request):
     except Reservation.DoesNotExist:
         return Response({'status': 'INVALID', 'message': 'Invalid QR Code.'}, status=status.HTTP_404_NOT_FOUND)
 
+from rest_framework.permissions import IsAdminUser, AllowAny
+
+# ... imports ...
+
 @api_view(['POST'])
+@permission_classes([AllowAny])
 def staff_login(request):
     username = request.data.get('username')
     password = request.data.get('password')
+    
     user = authenticate(username=username, password=password)
     if user:
         token, created = Token.objects.get_or_create(user=user)
         return Response({'status': 'OK', 'token': token.key, 'is_staff': user.is_staff})
+    
+    print("Authentication FAILED") # Log failure
     return Response({'status': 'ERROR', 'message': 'Credenciales inválidas'}, status=status.HTTP_401_UNAUTHORIZED)
 
 @api_view(['POST'])
@@ -150,3 +158,8 @@ def toggle_event(request, pk):
         return Response({'status': 'OK', 'is_active': event.is_active, 'capacity': event.capacity})
     except Event.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def health_check(request):
+    return Response({'status': 'OK', 'system': 'Sabbath Backend', 'version': '1.0.0'})

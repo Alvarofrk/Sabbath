@@ -149,7 +149,8 @@ CORS_ALLOW_ALL_ORIGINS = True
 CSRF_TRUSTED_ORIGINS = [
     "https://sabbath-rhxv.onrender.com",
     "https://sabbath-kblj.vercel.app", 
-    "https://sabbath-kblj-ng3a-sabbaths-projects-15a90f4d.vercel.app"
+    "https://sabbath-kblj-ng3a-sabbaths-projects-15a90f4d.vercel.app",
+    "https://sabbath-kblj7ng3a-sabbaths-projects-15a90f4d.vercel.app"
 ]
 
 MEDIA_URL = '/media/'
