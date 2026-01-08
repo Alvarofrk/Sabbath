@@ -1,12 +1,10 @@
 import axios from 'axios';
 
-const apiUrl = import.meta.env.VITE_API_URL;
-console.log("--- DEBUG API CONFIG ---");
-console.log("VITE_API_URL (env):", apiUrl);
-console.log("Using Fallback?:", !apiUrl);
+// __API_URL__ is defined in vite.config.js at build time
+const apiUrl = __API_URL__;
 
 const api = axios.create({
-    baseURL: apiUrl || 'http://127.0.0.1:8000/api/',
+    baseURL: apiUrl,
 });
 
 api.interceptors.request.use(config => {
